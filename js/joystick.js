@@ -3,7 +3,7 @@ class Joystick {
     this.position = { x: x, y: y };
     this.outlineWidth = 110;
     this.outlineGap = 10;
-    this.centerLineWidth = 20;
+    this.centerLineWidth = 30;
 
     this.buttonWidth = 30;
     this.buttonPos = { x: this.position.x, y: this.position.y };

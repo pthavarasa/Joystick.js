@@ -2,31 +2,31 @@ class Square {
   constructor(x = 0, y = 0) {
     this.squareSize = 20;
     this.squarePos = { x: x, y: x };
-    this.speed = 20;
+    this.speed = 10;
 
     this.heading = 0;
     this.velocity = 0;
+    this.direction = "";
   }
 
   updateSquarePos() {
-    if (this.heading >= 338 || this.heading < 22)
-      this.squarePos.x += this.speed * this.velocity;
-    else if (this.heading >= 22 && this.heading < 67) {
+    if (this.direction == "E") this.squarePos.x += this.speed * this.velocity;
+    else if (this.direction == "NE") {
       this.squarePos.x += this.speed * this.velocity;
       this.squarePos.y -= this.speed * this.velocity;
-    } else if (this.heading >= 67 && this.heading < 112)
+    } else if (this.direction == "N")
       this.squarePos.y -= this.speed * this.velocity;
-    else if (this.heading >= 112 && this.heading < 157) {
+    else if (this.direction == "NW") {
       this.squarePos.x -= this.speed * this.velocity;
       this.squarePos.y -= this.speed * this.velocity;
-    } else if (this.heading >= 157 && this.heading < 202)
+    } else if (this.direction == "W")
       this.squarePos.x -= this.speed * this.velocity;
-    else if (this.heading >= 202 && this.heading < 247) {
+    else if (this.direction == "SW") {
       this.squarePos.x -= this.speed * this.velocity;
       this.squarePos.y += this.speed * this.velocity;
-    } else if (this.heading >= 247 && this.heading < 292)
+    } else if (this.direction == "S")
       this.squarePos.y += this.speed * this.velocity;
-    else if (this.heading >= 297 && this.heading < 338) {
+    else if (this.direction == "SE") {
       this.squarePos.x += this.speed * this.velocity;
       this.squarePos.y += this.speed * this.velocity;
     }
@@ -52,9 +52,10 @@ class Square {
     ctx.fill();
   }
 
-  update(heading, velocity) {
+  update(heading, velocity, direction) {
     this.heading = heading;
     this.velocity = velocity;
+    this.direction = direction;
     this.updateSquarePos();
     this.drawSquare();
   }
